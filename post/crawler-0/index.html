@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://nichujie.github.io//favicon.ico?v=1579959557283">
+<link rel="shortcut icon" href="https://nichujie.github.io//favicon.ico?v=1579959643539">
 <link rel="stylesheet" href="https://nichujie.github.io//styles/main.css">
 
 
@@ -24,14 +24,10 @@
 
 
 
-    <meta name="description" content="👏  欢迎使用 Gridea ！
-✍️  Gridea 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...
+    <meta name="description" content="爬虫简介
 
-Github
-Gridea 主页
-示例网站
-Code Test
-#include &lt;i..." />
+爬虫！！
+" />
     <meta name="keywords" content="网络爬虫,python" />
   </head>
   <body>
@@ -41,7 +37,7 @@ Code Test
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://nichujie.github.io/">
-        <img src="https://nichujie.github.io//images/avatar.png?v=1579959557283" class="site-logo">
+        <img src="https://nichujie.github.io//images/avatar.png?v=1579959643539" class="site-logo">
         <h1 class="site-title">Mr.NÌ的个人博客</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -104,81 +100,15 @@ Code Test
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
             <h2 class="post-title">网络爬虫入门-0</h2>
-            <div class="post-date">2018-12-12</div>
+            <div class="post-date">2020-01-25</div>
             
               <div class="feature-container" style="background-image: url('https://nichujie.github.io//post-images/crawler-0.png')">
               </div>
             
             <div class="post-content" v-pre>
-              <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
+              <p>爬虫简介</p>
 <!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="https://gridea.dev/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="code-test">Code Test</h2>
-<pre><code class="language-cpp">#include &lt;iostream&gt;
-using namespace std;
-
-int main () {
-    std::cout &lt;&lt; &quot;Hello World!&quot; &lt;&lt; std::endl;
-    return 0;
-}
-</code></pre>
-<h2 id="html">Html</h2>
-<pre><code class="language-js">import React, {Component} from &quot;react&quot;;
-import {Icon, Menu} from &quot;antd&quot;;
-
-import TodoStore from '../store/TodoStore';
-
-interface IMenuClick {
-  key: string
-}
-
-let handleClick = (e: IMenuClick) =&gt; {
-  TodoStore.showType = e.key;
-};
-
-const TodoCategory: React.FC = () =&gt; {
-  return (
-    &lt;Menu
-      theme=&quot;dark&quot;
-      defaultSelectedKeys={['undone']}
-      mode=&quot;inline&quot;
-      onClick={handleClick}
-    &gt;
-      &lt;Menu.Item key=&quot;undone&quot;&gt;
-        &lt;Icon type=&quot;clock-circle&quot;/&gt;
-        &lt;span&gt;未完成&lt;/span&gt;
-      &lt;/Menu.Item&gt;
-      &lt;Menu.Item key=&quot;done&quot;&gt;
-        &lt;Icon type=&quot;check-circle&quot;/&gt;
-        &lt;span&gt;已完成&lt;/span&gt;
-      &lt;/Menu.Item&gt;
-      &lt;Menu.Item key=&quot;expired&quot;&gt;
-        &lt;Icon type=&quot;exclamation-circle&quot;/&gt;
-        &lt;span&gt;已过期&lt;/span&gt;
-      &lt;/Menu.Item&gt;
-    &lt;/Menu&gt;
-  );
-};
-
-
-export default TodoCategory;
-</code></pre>
-<h2 id="python">python</h2>
-<pre><code class="language-python">class RF_Process(Process):
-    def __init__(self, ticker_obj, que, db_config, server_config):
-        super(RF_Process, self).__init__()
-        self._stock = RF_Stock(ticker_obj=ticker_obj, db_config=db_config, server_config=server_config)
-        self.que = que
-
-    def run(self):
-        print(get_t_str() + ' Start {}...'.format(self._stock.symbol))
-        result = self._stock.start()
-        if not result:
-            self.que.put(self._stock.symbol)
-</code></pre>
+<h2 id="爬虫">爬虫！！</h2>
 
             </div>
             

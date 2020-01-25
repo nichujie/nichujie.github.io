@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://nichujie.github.io/</id>
     <title>Mr.NÌ的个人博客</title>
-    <updated>2020-01-25T13:39:20.284Z</updated>
+    <updated>2020-01-25T13:40:48.198Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://nichujie.github.io/"/>
     <link rel="self" href="https://nichujie.github.io/atom.xml"/>
@@ -15,79 +15,12 @@
         <id>https://nichujie.github.io/post/crawler-0</id>
         <link href="https://nichujie.github.io/post/crawler-0">
         </link>
-        <updated>2018-12-11T16:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
+        <updated>2020-01-25T13:39:48.000Z</updated>
+        <summary type="html"><![CDATA[<p>爬虫简介</p>
 ]]></summary>
-        <content type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
+        <content type="html"><![CDATA[<p>爬虫简介</p>
 <!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="https://gridea.dev/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="code-test">Code Test</h2>
-<pre><code class="language-cpp">#include &lt;iostream&gt;
-using namespace std;
-
-int main () {
-    std::cout &lt;&lt; &quot;Hello World!&quot; &lt;&lt; std::endl;
-    return 0;
-}
-</code></pre>
-<h2 id="html">Html</h2>
-<pre><code class="language-js">import React, {Component} from &quot;react&quot;;
-import {Icon, Menu} from &quot;antd&quot;;
-
-import TodoStore from '../store/TodoStore';
-
-interface IMenuClick {
-  key: string
-}
-
-let handleClick = (e: IMenuClick) =&gt; {
-  TodoStore.showType = e.key;
-};
-
-const TodoCategory: React.FC = () =&gt; {
-  return (
-    &lt;Menu
-      theme=&quot;dark&quot;
-      defaultSelectedKeys={['undone']}
-      mode=&quot;inline&quot;
-      onClick={handleClick}
-    &gt;
-      &lt;Menu.Item key=&quot;undone&quot;&gt;
-        &lt;Icon type=&quot;clock-circle&quot;/&gt;
-        &lt;span&gt;未完成&lt;/span&gt;
-      &lt;/Menu.Item&gt;
-      &lt;Menu.Item key=&quot;done&quot;&gt;
-        &lt;Icon type=&quot;check-circle&quot;/&gt;
-        &lt;span&gt;已完成&lt;/span&gt;
-      &lt;/Menu.Item&gt;
-      &lt;Menu.Item key=&quot;expired&quot;&gt;
-        &lt;Icon type=&quot;exclamation-circle&quot;/&gt;
-        &lt;span&gt;已过期&lt;/span&gt;
-      &lt;/Menu.Item&gt;
-    &lt;/Menu&gt;
-  );
-};
-
-
-export default TodoCategory;
-</code></pre>
-<h2 id="python">python</h2>
-<pre><code class="language-python">class RF_Process(Process):
-    def __init__(self, ticker_obj, que, db_config, server_config):
-        super(RF_Process, self).__init__()
-        self._stock = RF_Stock(ticker_obj=ticker_obj, db_config=db_config, server_config=server_config)
-        self.que = que
-
-    def run(self):
-        print(get_t_str() + ' Start {}...'.format(self._stock.symbol))
-        result = self._stock.start()
-        if not result:
-            self.que.put(self._stock.symbol)
-</code></pre>
+<h2 id="爬虫">爬虫！！</h2>
 ]]></content>
     </entry>
 </feed>
