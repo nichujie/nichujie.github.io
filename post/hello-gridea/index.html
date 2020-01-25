@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Hello Gridea | Gridea</title>
-<link rel="shortcut icon" href="https://nichujie.github.io//favicon.ico?v=1579947564155">
+<link rel="shortcut icon" href="https://nichujie.github.io//favicon.ico?v=1579948607575">
 <link href="https://cdn.remixicon.com/releases/v2.1.0/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://nichujie.github.io//styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="Hello Gridea | Gridea - Atom Feed" href="https://nichujie.github.io//atom.xml">
@@ -17,8 +17,8 @@
 Github
 Gridea 主页
 示例网站
-特性👇
-📝  你可以使用最酷的 Markdo..." />
+Code Test
+#include &lt;i..." />
     <meta name="keywords" content="Gridea" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -28,7 +28,7 @@ Gridea 主页
       <div class="main-content">
         <div class="site-header">
   <a href="https://nichujie.github.io/">
-  <img class="avatar" src="https://nichujie.github.io//images/avatar.png?v=1579947564155" alt="">
+  <img class="avatar" src="https://nichujie.github.io//images/avatar.png?v=1579948607575" alt="">
   </a>
   <h1 class="site-title">
     Gridea
@@ -107,28 +107,78 @@ Gridea 主页
 <p><a href="https://github.com/getgridea/gridea">Github</a><br>
 <a href="https://gridea.dev/">Gridea 主页</a><br>
 <a href="http://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
-<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
-<p>🏷️  你可以对文章进行标签分组</p>
-<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
-<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
-<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
-<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
-<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
-<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
-<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
-<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情发挥你的才华吧！</p>
-<p>😘 Enjoy~</p>
+<h2 id="code-test">Code Test</h2>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main () {
+    std::cout &lt;&lt; &quot;Hello World!&quot; &lt;&lt; std::endl;
+    return 0;
+}
+</code></pre>
+<h2 id="html">Html</h2>
+<pre><code class="language-js">import React, {Component} from &quot;react&quot;;
+import {Icon, Menu} from &quot;antd&quot;;
+
+import TodoStore from '../store/TodoStore';
+
+interface IMenuClick {
+  key: string
+}
+
+let handleClick = (e: IMenuClick) =&gt; {
+  TodoStore.showType = e.key;
+};
+
+const TodoCategory: React.FC = () =&gt; {
+  return (
+    &lt;Menu
+      theme=&quot;dark&quot;
+      defaultSelectedKeys={['undone']}
+      mode=&quot;inline&quot;
+      onClick={handleClick}
+    &gt;
+      &lt;Menu.Item key=&quot;undone&quot;&gt;
+        &lt;Icon type=&quot;clock-circle&quot;/&gt;
+        &lt;span&gt;未完成&lt;/span&gt;
+      &lt;/Menu.Item&gt;
+      &lt;Menu.Item key=&quot;done&quot;&gt;
+        &lt;Icon type=&quot;check-circle&quot;/&gt;
+        &lt;span&gt;已完成&lt;/span&gt;
+      &lt;/Menu.Item&gt;
+      &lt;Menu.Item key=&quot;expired&quot;&gt;
+        &lt;Icon type=&quot;exclamation-circle&quot;/&gt;
+        &lt;span&gt;已过期&lt;/span&gt;
+      &lt;/Menu.Item&gt;
+    &lt;/Menu&gt;
+  );
+};
+
+
+export default TodoCategory;
+</code></pre>
+<h2 id="python">python</h2>
+<pre><code class="language-python">class RF_Process(Process):
+    def __init__(self, ticker_obj, que, db_config, server_config):
+        super(RF_Process, self).__init__()
+        self._stock = RF_Stock(ticker_obj=ticker_obj, db_config=db_config, server_config=server_config)
+        self.que = que
+
+    def run(self):
+        print(get_t_str() + ' Start {}...'.format(self._stock.symbol))
+        result = self._stock.start()
+        if not result:
+            self.que.put(self._stock.symbol)
+</code></pre>
 
               </div>
               <div class="toc-container">
                 <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#%E7%89%B9%E6%80%A7">特性👇</a></li>
+<li><a href="#code-test">Code Test</a></li>
+<li><a href="#html">Html</a></li>
+<li><a href="#python">python</a></li>
 </ul>
 </li>
 </ul>
