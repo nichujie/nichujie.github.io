@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://nichujie.github.io/</id>
-    <title>Gridea</title>
-    <updated>2020-01-25T12:11:36.090Z</updated>
+    <title>Mr.NÌ的个人博客</title>
+    <updated>2020-01-25T12:19:34.666Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://nichujie.github.io/"/>
     <link rel="self" href="https://nichujie.github.io/atom.xml"/>
-    <subtitle>温故而知新</subtitle>
+    <subtitle>今天Mr.NÌ编程入门了吗？</subtitle>
     <logo>https://nichujie.github.io/images/avatar.png</logo>
     <icon>https://nichujie.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2020, Gridea</rights>
+    <rights>All rights reserved 2020, Mr.NÌ的个人博客</rights>
     <entry>
         <title type="html"><![CDATA[Hello Gridea]]></title>
         <id>https://nichujie.github.io/post/hello-gridea</id>
