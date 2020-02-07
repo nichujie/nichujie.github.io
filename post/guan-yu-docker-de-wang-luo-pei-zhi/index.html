@@ -4,49 +4,28 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>关于 - Mr.NÌ的个人博客</title>
+<title>关于Docker的网络配置 - Mr.NÌ的个人博客</title>
 <link rel="shortcut icon" href="https://nichujie.github.io//favicon.ico">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
 <link rel="stylesheet" href="https://nichujie.github.io//media/css/tailwind.css">
 <link rel="stylesheet" href="https://nichujie.github.io//styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="关于 - Mr.NÌ的个人博客 - Atom Feed" href="https://nichujie.github.io//atom.xml">
+<link rel="alternate" type="application/atom+xml" title="关于Docker的网络配置 - Mr.NÌ的个人博客 - Atom Feed" href="https://nichujie.github.io//atom.xml">
 
     
 
-  <meta name="description" content="
-欢迎来到我的小站呀，很高兴遇见你！🤝
-
-🏠 关于本站
-👨‍💻 博主是谁
-⛹ 兴趣爱好
-📬 联系我呀
-..." />
-  <meta property="og:title" content="关于 - Mr.NÌ的个人博客">
-  <meta property="og:description" content="
-欢迎来到我的小站呀，很高兴遇见你！🤝
-
-🏠 关于本站
-👨‍💻 博主是谁
-⛹ 兴趣爱好
-📬 联系我呀
-..." />
+  <meta name="description" content="最近实习的一个小项目中涉及到了使用docker部署。正好之前一直想学习下docker，于是本着业务驱动学习的心态，花了1天速成了一下docker。然而，当我开始着手配置容器的时候，容器间的通信和网络死活配置不好。最终，经历了整整2天的查阅文..." />
+  <meta property="og:title" content="关于Docker的网络配置 - Mr.NÌ的个人博客">
+  <meta property="og:description" content="最近实习的一个小项目中涉及到了使用docker部署。正好之前一直想学习下docker，于是本着业务驱动学习的心态，花了1天速成了一下docker。然而，当我开始着手配置容器的时候，容器间的通信和网络死活配置不好。最终，经历了整整2天的查阅文..." />
   <meta property="og:type" content="articles">
-  <meta property="og:url" content="https://nichujie.github.io/post/about" />
+  <meta property="og:url" content="https://nichujie.github.io/post/guan-yu-docker-de-wang-luo-pei-zhi" />
   <meta property="og:image" content="https://nichujie.github.io//images/avatar.png">
   <meta property="og:image:height" content="630">
   <meta property="og:image:width" content="1200">
-  <meta name="twitter:title" content="关于 - Mr.NÌ的个人博客">
-  <meta name="twitter:description" content="
-欢迎来到我的小站呀，很高兴遇见你！🤝
-
-🏠 关于本站
-👨‍💻 博主是谁
-⛹ 兴趣爱好
-📬 联系我呀
-...">
+  <meta name="twitter:title" content="关于Docker的网络配置 - Mr.NÌ的个人博客">
+  <meta name="twitter:description" content="最近实习的一个小项目中涉及到了使用docker部署。正好之前一直想学习下docker，于是本着业务驱动学习的心态，花了1天速成了一下docker。然而，当我开始着手配置容器的时候，容器间的通信和网络死活配置不好。最终，经历了整整2天的查阅文...">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="canonical" href="https://nichujie.github.io/post/about">
+  <link rel="canonical" href="https://nichujie.github.io/post/guan-yu-docker-de-wang-luo-pei-zhi">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
@@ -68,21 +47,17 @@
     <div class="max-w-4xl w-full mx-auto">
       <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
         <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
-          关于
+          关于Docker的网络配置
         </h1>
         
         <div class="mb-8 flex flex-wrap">
-          <div class="text-gray-400 text-sm mr-4">2019-01-25 · 1 min read</div>
+          <div class="text-gray-400 text-sm mr-4">2020-02-07 · 1 min read</div>
           
         </div>
         <div class="markdown mb-8" v-pre>
-          <blockquote>
-<p>欢迎来到我的小站呀，很高兴遇见你！🤝</p>
-</blockquote>
-<h2 id="关于本站">🏠 关于本站</h2>
-<h2 id="博主是谁">👨‍💻 博主是谁</h2>
-<h2 id="兴趣爱好">⛹ 兴趣爱好</h2>
-<h2 id="联系我呀">📬 联系我呀</h2>
+          <p>最近实习的一个小项目中涉及到了使用docker部署。正好之前一直想学习下docker，于是本着业务驱动学习的心态，花了1天速成了一下docker。然而，当我开始着手配置容器的时候，容器间的通信和网络死活配置不好。最终，经历了整整2天的查阅文档和尝试，终于完成了老大的要求（好难）。关于这个问题的描述网上并不多，于是我决定写一篇博客来记录一下。</p>
+<h2 id="问题背景">问题背景</h2>
+<p>整个项目的构造大概是这样的</p>
 
         </div>
         <!-- Share to Twitter, Weibo, Telegram -->
@@ -152,10 +127,7 @@
         <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#%E5%85%B3%E4%BA%8E%E6%9C%AC%E7%AB%99">🏠 关于本站</a></li>
-<li><a href="#%E5%8D%9A%E4%B8%BB%E6%98%AF%E8%B0%81">👨‍💻 博主是谁</a></li>
-<li><a href="#%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD">⛹ 兴趣爱好</a></li>
-<li><a href="#%E8%81%94%E7%B3%BB%E6%88%91%E5%91%80">📬 联系我呀</a></li>
+<li><a href="#%E9%97%AE%E9%A2%98%E8%83%8C%E6%99%AF">问题背景</a></li>
 </ul>
 </li>
 </ul>

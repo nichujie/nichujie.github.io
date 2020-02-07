@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://nichujie.github.io/</id>
     <title>Mr.NÌ的个人博客</title>
-    <updated>2020-01-25T13:40:48.198Z</updated>
+    <updated>2020-02-07T10:46:10.335Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://nichujie.github.io/"/>
     <link rel="self" href="https://nichujie.github.io/atom.xml"/>
@@ -10,6 +10,17 @@
     <logo>https://nichujie.github.io/images/avatar.png</logo>
     <icon>https://nichujie.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Mr.NÌ的个人博客</rights>
+    <entry>
+        <title type="html"><![CDATA[关于Docker的网络配置]]></title>
+        <id>https://nichujie.github.io/post/guan-yu-docker-de-wang-luo-pei-zhi</id>
+        <link href="https://nichujie.github.io/post/guan-yu-docker-de-wang-luo-pei-zhi">
+        </link>
+        <updated>2020-02-07T06:31:34.000Z</updated>
+        <content type="html"><![CDATA[<p>最近实习的一个小项目中涉及到了使用docker部署。正好之前一直想学习下docker，于是本着业务驱动学习的心态，花了1天速成了一下docker。然而，当我开始着手配置容器的时候，容器间的通信和网络死活配置不好。最终，经历了整整2天的查阅文档和尝试，终于完成了老大的要求（好难）。关于这个问题的描述网上并不多，于是我决定写一篇博客来记录一下。</p>
+<h2 id="问题背景">问题背景</h2>
+<p>整个项目的构造大概是这样的</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[网络爬虫入门-0]]></title>
         <id>https://nichujie.github.io/post/crawler-0</id>
