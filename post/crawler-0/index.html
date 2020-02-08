@@ -17,20 +17,14 @@
   <meta name="description" content="爬虫简介
 
 爬虫！！
-version: &amp;quot;3.7&amp;quot;
-
-# This file is for production.
-# The environment variable CONTENT_STORE_DB_HOST
-# s..." />
+俺不会
+" />
   <meta property="og:title" content="网络爬虫入门-0 - Mr.NÌ的个人博客">
   <meta property="og:description" content="爬虫简介
 
 爬虫！！
-version: &amp;quot;3.7&amp;quot;
-
-# This file is for production.
-# The environment variable CONTENT_STORE_DB_HOST
-# s..." />
+俺不会
+" />
   <meta property="og:type" content="articles">
   <meta property="og:url" content="https://nichujie.github.io/post/crawler-0" />
   <meta property="og:image" content="https://nichujie.github.io//post-images/crawler-0.png">
@@ -40,11 +34,8 @@ version: &amp;quot;3.7&amp;quot;
   <meta name="twitter:description" content="爬虫简介
 
 爬虫！！
-version: &amp;quot;3.7&amp;quot;
-
-# This file is for production.
-# The environment variable CONTENT_STORE_DB_HOST
-# s...">
+俺不会
+">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://nichujie.github.io/post/crawler-0">
 
@@ -74,7 +65,7 @@ version: &amp;quot;3.7&amp;quot;
           <img src="https://nichujie.github.io//post-images/crawler-0.png" alt="网络爬虫入门-0" class="block w-full mb-8">
         
         <div class="mb-8 flex flex-wrap">
-          <div class="text-gray-400 text-sm mr-4">2020-01-25 · 3 min read</div>
+          <div class="text-gray-400 text-sm mr-4">2020-01-25 · 1 min read</div>
           
             <a href="https://nichujie.github.io/tag/x9zKZfPQv" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
               <i class="ri-hashtag"></i>
@@ -91,179 +82,7 @@ version: &amp;quot;3.7&amp;quot;
           <p>爬虫简介</p>
 <!-- more -->
 <h2 id="爬虫">爬虫！！</h2>
-<pre><code class="language-yml">version: &quot;3.7&quot;
-
-# This file is for production.
-# The environment variable CONTENT_STORE_DB_HOST
-# should be set as the IP address of the database.
-services:
-  admin:
-    container_name: contentstore-admin
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - &quot;8888:8888&quot;
-    environment:
-      CONTENT_STORE_DB_HOST: ${CONTENT_STORE_DB_HOST:-contentstore-db}
-      CONTENT_STORE_DB_USERNAME: ${CONTENT_STORE_DB_USERNAME:-root}
-      CONTENT_STORE_DB_PASSWORD: ${CONTENT_STORE_DB_PASSWORD:-root}
-    volumes:
-      - type: bind
-        source: .
-        target: /contentstore-admin
-    working_dir: /contentstore-admin/
-    command: ./initialize.sh
-</code></pre>
-<h2 id="python">python</h2>
-<pre><code class="language-python">from django.db import models
-
-from apps.user.models import User
-from apps.role.models import Role
-
-
-class UserRole(models.Model):
-    id = models.AutoField(db_column='ID', primary_key=True)
-    role = models.ForeignKey(Role, models.PROTECT, db_column='ROLE_ID')
-    user = models.ForeignKey(User, models.PROTECT, db_column='USER_ID')
-    display_order = models.IntegerField(db_column='DISPLAY_ORDER')
-
-    class Meta:
-        db_table = 'USER_ROLE'
-</code></pre>
-<h2 id="js">js</h2>
-<pre><code class="language-js">import { notification } from 'antd';
-import { AUTHOR, CrudError } from '../constants';
-import {
-  FETCH_LIST,
-  CREATE_DETAIL,
-  FETCH_DETAIL,
-  UPDATE_DETAIL,
-  SET_LIST,
-  SET_DETAIL,
-  DELETE_DETAIL,
-} from '@/constants';
-import R from '@/utils/R';
-
-const baseUrl = '/admin/authors';
-
-export default {
-  namespace: AUTHOR,
-
-  state: {
-    list: [],
-    detail: {},
-  },
-
-  effects: {
-    *[FETCH_LIST](_, { call, put }) {
-      const result = yield call(R.get, baseUrl);
-      if (!result.success) return;
-      yield put({
-        type: SET_LIST,
-        payload: result.json,
-      });
-    },
-
-    *[CREATE_DETAIL]({ payload }, { call, put }) {
-      const result = yield call(R.post, baseUrl, payload);
-      if (!result.success) {
-        notification.error({
-          message: '操作失败',
-          description: CrudError[result.json.messageCode],
-        });
-
-        return false;
-      }
-      notification.success({ message: '操作成功' });
-      yield put({ type: FETCH_LIST });
-      return true;
-    },
-
-    *[FETCH_DETAIL]({ payload: id }, { call, put }) {
-      const result = yield call(R.get, `${baseUrl}/${id}`);
-      if (!result.success) return null;
-      yield put({
-        type: SET_DETAIL,
-        payload: result.json,
-      });
-      return result.json;
-    },
-
-    *[UPDATE_DETAIL]({ payload }, { call, put }) {
-      const result = yield call(R.patch, `${baseUrl}/${payload.id}`, payload);
-      if (result.success) {
-        notification.success({ message: '操作成功' });
-        yield put({ type: FETCH_LIST });
-
-        return;
-      }
-      notification.error({ message: '发生意外错误，请联系开发人员处理' });
-    },
-
-    *[DELETE_DETAIL]({ payload: id }, { call, put }) {
-      const result = yield call(R.delete, `${baseUrl}/${id}`);
-      if (!result.success) {
-        notification.error({
-          message: '操作失败',
-          description: CrudError[result.json.messageCode],
-        });
-
-        return;
-      }
-      notification.success({ message: '操作成功' });
-      yield put({ type: FETCH_LIST });
-    },
-  },
-
-  reducers: {
-    [SET_LIST](state, action) {
-      return {
-        ...state,
-        list: action.payload,
-      };
-    },
-
-    [SET_DETAIL](state, action) {
-      return {
-        ...state,
-        detail: action.payload,
-      };
-    },
-  },
-};
-</code></pre>
-<h2 id="c">C++</h2>
-<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
-using namespace std;
-int a[100];
-
-int main()
-{
-    int n;
-    cin &gt;&gt; n;
-    for (int i = 0;i &lt; n;i ++)
-    {
-        cin &gt;&gt; a[i];//输入数组a  
-    }
-    for (int i = 0;i &lt; n - 1;i ++)//如果有n个数，就要连续排序n - 1 次
-    {
-        for (int j = 0;j &lt; n - 1 - i;j ++)//执行每一次比较的次数
-        {
-            if (a[j] &gt; a[j + 1])//如果这个数比前面的大
-            {
-                swap(a[j],a[j + 1]);//把a[j] 和 a[j + 1] 进行交换
-            }
-        }
-    }
-    for (int i = 0;i &lt; n;i ++)//数组输出
-    {
-        cout &lt;&lt; a[i] &lt;&lt; &quot;\t&quot;;
-    }
-    cout &lt;&lt; endl;
-    return 0;
-}
-</code></pre>
+<p>俺不会</p>
 
         </div>
         <!-- Share to Twitter, Weibo, Telegram -->
@@ -326,9 +145,6 @@ int main()
 <li>
 <ul>
 <li><a href="#%E7%88%AC%E8%99%AB">爬虫！！</a></li>
-<li><a href="#python">python</a></li>
-<li><a href="#js">js</a></li>
-<li><a href="#c">C++</a></li>
 </ul>
 </li>
 </ul>

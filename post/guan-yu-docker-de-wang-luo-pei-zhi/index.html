@@ -19,7 +19,7 @@
   <meta property="og:description" content="最近实习的一个小项目中涉及到了使用docker部署。正好之前一直想学习下docker，于是本着业务驱动学习的心态，花了1天速成了一下docker。然而，当我开始着手配置容器的时候，容器间的通信和网络死活配置不好。最终，经历了整整2天的查阅文..." />
   <meta property="og:type" content="articles">
   <meta property="og:url" content="https://nichujie.github.io/post/guan-yu-docker-de-wang-luo-pei-zhi" />
-  <meta property="og:image" content="https://nichujie.github.io//images/avatar.png">
+  <meta property="og:image" content="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2187117298,1040617930&amp;fm=26&amp;gp=0.jpg">
   <meta property="og:image:height" content="630">
   <meta property="og:image:width" content="1200">
   <meta name="twitter:title" content="关于Docker的网络配置 - Mr.NÌ的个人博客">
@@ -50,8 +50,15 @@
           关于Docker的网络配置
         </h1>
         
+          <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2187117298,1040617930&amp;fm=26&amp;gp=0.jpg" alt="关于Docker的网络配置" class="block w-full mb-8">
+        
         <div class="mb-8 flex flex-wrap">
-          <div class="text-gray-400 text-sm mr-4">2020-02-07 · 1 min read</div>
+          <div class="text-gray-400 text-sm mr-4">2020-02-07 · 7 min read</div>
+          
+            <a href="https://nichujie.github.io/tag/zS4ftdsGK" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              docker-compose
+            </a>
           
             <a href="https://nichujie.github.io/tag/mTB92XCsZ" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
               <i class="ri-hashtag"></i>
@@ -60,9 +67,125 @@
           
         </div>
         <div class="markdown mb-8" v-pre>
-          <p>最近实习的一个小项目中涉及到了使用docker部署。正好之前一直想学习下docker，于是本着业务驱动学习的心态，花了1天速成了一下docker。然而，当我开始着手配置容器的时候，容器间的通信和网络死活配置不好。最终，经历了整整2天的查阅文档和尝试，终于完成了老大的要求（好难）。关于这个问题的描述网上并不多，于是我决定写一篇博客来记录一下。</p>
+          <p>最近实习的一个小项目中涉及到了使用docker部署。正好之前一直想学习下docker，于是本着业务驱动学习的心态，花了1天速成了一下docker。然而，当我开始着手配置容器的时候，容器间的通信和网络死活配置不好。最终，经历了整整2天的查阅文档和尝试，才完成了老大的要求（好菜）。关于这个问题的描述网上并不多，于是我决定写一篇博客来记录一下。</p>
+<!-- more -->
 <h2 id="问题背景">问题背景</h2>
-<p>整个项目的构造大概是这样的</p>
+<p>为了快速部署和迭代，整个项目采用了docker化部署的策略。简单来说就是一个应用模块打包成一个docker容器：react的前端一个，django一个，java的后端一个，MySQL一个，nginx一个...</p>
+<p>一般来说流程都是用docker-compose来编排和部署一组容器，这一组容器相当于封装在了一起，共享各种资源，就好像在同一台虚拟机上运行一样。但是偶尔，我们会遇到这样的需求：为了降低代码的耦合度，要求将不同的应用组封装在不同的docker-compose，但是仍然需要互相通信。简言之，两个docker-compose文件中的容器如何互相通信呢？</p>
+<h2 id="问题描述">问题描述</h2>
+<p>让我们简化一下模型（略去了部分细节和多余的容器）：</p>
+<pre><code class="language-yml"># db/docker-compose-1.yml
+# MySQL
+version: &quot;3&quot;
+services:
+  db:
+    container_name: my-db
+    image: mysql
+    ports:
+      - &quot;3306:3306&quot;
+</code></pre>
+<pre><code class="language-yml"># app/docker-compose-2.yml
+# django app
+version: &quot;3&quot;
+services:
+  web:
+    container_name: my-app
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - &quot;8000:8000&quot;
+</code></pre>
+<p>简单来说，我现在有两个docker-compose文件，分别run起来之后，我希望实现我的django app可以访问MySQL数据库（在3306端口）。</p>
+<p>乍一看，好像分别run起来就行了呀，反正MySQL已经映射到本机的3306端口，django只要去连接localhost的3306端口就好了嘛！</p>
+<p>其实不然。docker-compose会为每一个文件创建一个network（docker的虚拟网络），把每一个文件里的所有容器连接在一个网络。也就是说，上面的两个容器实际上处于不同的网络！而众所周知，容器化技术可以近似的认为是虚拟机技术，所以每个容器和宿主机也没什么关系。一句话总结：<strong>MySQL所在容器的localhost、django所在容器的localhost，和你宿主机的localhost，这三个都不一样！！！</strong></p>
+<h2 id="问题解决">问题解决</h2>
+<p>众所周知(?)，docker的网络类型一般有4种（还有个神奇的就不提了）：</p>
+<ul>
+<li><strong>Bridge</strong>：默认模式，虚拟网桥，一个网桥内的容器可以互相通信。</li>
+<li><strong>Host</strong>：直接与宿主机共用网络，也就是localhost直接变成宿主机。（但是该模式只有linux支持，且该模式与ports和expose选项不兼容，因为反正已经融为一体了，所有端口与主机相同）</li>
+<li><strong>Overlay</strong>：跨主机的容器间相互通信。</li>
+<li><strong>None</strong>：没有任何网络。</li>
+</ul>
+<p>那么最粗暴的解决方式当然是统统Host。但是这样很不优雅，容器化的意义就被弱化了。而且要mac和windows用户怎么办？（作为一个mac用户其实一开始尝试过host，半天之后才在文档发现一行小字说只支持linux...）</p>
+<p>查阅了文档之后发现了这样一种神奇操作，只要在docker-compose-2.yml后面加上：</p>
+<pre><code class="language-yml"># app/docker-compose-2.yml
+# django app
+version: &quot;3&quot;
+services:
+  web:
+    container_name: my-app
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - &quot;8000:8000&quot;
+networks:
+  default:
+    external:
+      name: db_default
+</code></pre>
+<p>这是一个全局的networks设置（和services同级），意思是把<strong>默认</strong>的全局网络设置为一个叫<code>db_default</code>的网络（external的意思是去找现存的网络，而不是新建一个）。</p>
+<p>那为什么网络的名字叫<code>db_default</code>呢？原因是每一个docker-compose启动的时候会创建一个叫<code>[projectname]_default</code>的网络，projectname就是这个文件所在的<strong>文件夹名字</strong>。例如上面两个docker-compose分别启动的话，会产生一个<code>db_default</code>和一个<code>app_default</code>。现在的操作就是阻止了<code>app_default</code>的生成，而让它加入现存的<code>db_default</code>（当然这也意味着db要在web前启动）。</p>
+<p>具体的网络名字可以到命令行输入<code>docker network ls</code>看到：<br>
+<img src="https://nichujie.github.io//post-images/1581176477901.png" alt="" loading="lazy"></p>
+<p>当然如果你觉得<code>db_default</code>这个自动生成的名字不太保险，你也可以自己设置：</p>
+<pre><code class="language-yml"># db/docker-compose-1.yml
+# MySQL
+version: &quot;3&quot;
+services:
+  db:
+    container_name: my-db
+    image: mysql
+    networks:
+      - my_net
+    ports:
+      - &quot;3306:3306&quot;
+networks:
+  my_net:
+    name: my_net
+</code></pre>
+<p>上面的networks在db的下级，表示加入一个叫<code>my_net</code>的网络，而下面那个全局的networks表示创建一个叫<code>my_net</code>的网络。此时<code>db_default</code>不再存在。</p>
+<pre><code class="language-yml"># app/docker-compose-2.yml
+# django app
+version: &quot;3&quot;
+services:
+  web:
+    container_name: my-app
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - &quot;8000:8000&quot;
+networks:
+  default:
+    external:
+      name: my_net
+</code></pre>
+<p>然后再修改下django的docker-compose设置，让它也去找现存的<code>my_net</code>。就此，容器间的网络配置就解决了。这两个容器现在连接到了一个网络中，我是不是就能在django中通过localhost连接数据库了呢？</p>
+<p>还是不能。此时如果运行<code>docker network inspect my_net</code>查看网络设置，会在<code>Containers</code>一项下发现，这两个容器虽然连到了一个网络里，但是ip地址仍然不同，就类似于一个局域网里的两台机器。</p>
+<p>但不要担心，当两个container连接到一个网络后，容器名会变成自己的hostname，以区分不同的容器。此时就可以通过容器名来访问数据库，只需要修改下django的配置文件:</p>
+<pre><code class="language-python">DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'mysql',
+        'USER': 'root',
+        'PASSWORD': '****',
+        # Hostname must be container name.
+        'HOST': 'my-db',
+        'PORT': '3306',
+    }
+}
+</code></pre>
+<p>也就是完整的mysql地址从<code>mysql://127.0.0.1:3306/</code>变成了<code>mysql://my-db:3306/</code>。这里<code>my-db</code>相当于域名，最终还是会解析成这个容器在局域网里的ip。</p>
+<h2 id="总结与补充">总结与补充</h2>
+<ol>
+<li>最终的效果是实现了两个docker-compose文件内的容器通信，而没有与宿主机的网络产生过多的交集，端口依然整洁，保证了容器与容器间，容器与宿主机间的隔离。</li>
+<li>不推荐使用<a href="https://docs.docker.com/compose/compose-file/#network_mode">network_mode</a>来设置，虽然也有container或者service这个选项，但是会与ports设置冲突！你就没办法把django的端口暴露出来了！（除非你把django的端口暴露设置到db那个service去，但这样一来就耦合了）</li>
+<li>不推荐links或者external_links，这两个都是legacy option，未来会被移除。</li>
+<li>要注意下django的端口是跑在<code>0.0.0.0:8000</code>，如果命令只写8000或者不指明端口号，还是会跑在<code>127.0.0.1</code>，端口暴露是映射不出去的！</li>
+<li>事实证明看文档速成是会出问题的。</li>
+</ol>
+<h2 id="reference">Reference</h2>
+<p>[1] https://docs.docker.com/compose/networking/<br>
+[2] https://docs.docker.com/compose/compose-file/</p>
 
         </div>
         <!-- Share to Twitter, Weibo, Telegram -->
@@ -125,6 +248,10 @@
 <li>
 <ul>
 <li><a href="#%E9%97%AE%E9%A2%98%E8%83%8C%E6%99%AF">问题背景</a></li>
+<li><a href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0">问题描述</a></li>
+<li><a href="#%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3">问题解决</a></li>
+<li><a href="#%E6%80%BB%E7%BB%93%E4%B8%8E%E8%A1%A5%E5%85%85">总结与补充</a></li>
+<li><a href="#reference">Reference</a></li>
 </ul>
 </li>
 </ul>
