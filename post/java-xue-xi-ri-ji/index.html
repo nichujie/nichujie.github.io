@@ -57,7 +57,7 @@
         </h1>
         
         <div class="mb-8 flex flex-wrap">
-          <div class="text-gray-400 text-sm mr-4">2022-01-19 · 2 min read</div>
+          <div class="text-gray-400 text-sm mr-4">2022-01-18 · 2 min read</div>
           
         </div>
         <div class="markdown mb-8" v-pre>
@@ -74,6 +74,34 @@
 <li>https://beginnersbook.com/java-tutorial-for-beginners-with-examples/（看起来内容比较全）</li>
 <li>https://www.liaoxuefeng.com/wiki/1252599548343744/1255883772263712 （老牌）</li>
 </ul>
+<p>从廖雪峰开始，先把中文的基础顺一遍。</p>
+<h3 id="基础">基础</h3>
+<ol>
+<li>用<code>object.equals(...)</code>判断引用类型是否相等</li>
+<li>调对象方法前记得判空</li>
+<li><code>switch</code>记得写<code>break</code>: 老生常谈，VG01、VE280新手常见错误之一</li>
+<li>Java 12的<code>Switch</code><a href="https://mkyong.com/java/java-12-switch-expressions/">新改动</a></li>
+<li>do while循环：这个好像在其他语言很少见，偶尔在写其他语言的时候会很想念这个特性（冷知识：pascal里面叫repeat...until)</li>
+</ol>
+<h3 id="oop">OOP</h3>
+<ol>
+<li><code>sealed</code>和<code>permits</code>: 不允许继承/允许部分继承<pre><code class="language-java">public sealed class Shape permits Rect, Circle, Triangle {
+    ...  // 仅允许Rect, Circle, Triangle继承
+}
+</code></pre>
+</li>
+<li>instanceof和强制类型转换简写<pre><code class="language-java">public class Main {
+    public static void main(String[] args) {
+        Object obj = &quot;hello&quot;;
+        if (obj instanceof String s) {  // 省去一步obj强转为s
+            // 可以直接使用变量s:
+            System.out.println(s.toUpperCase());
+        }
+    }
+}
+</code></pre>
+</li>
+</ol>
 
         </div>
         <!-- Share to Twitter, Weibo, Telegram -->
@@ -119,7 +147,12 @@
         <ul class="markdownIt-TOC">
 <li><a href="#%E5%89%8D%E8%A8%80">前言</a>
 <ul>
-<li><a href="#2022120">2022.1.20</a></li>
+<li><a href="#2022120">2022.1.20</a>
+<ul>
+<li><a href="#%E5%9F%BA%E7%A1%80">基础</a></li>
+<li><a href="#oop">OOP</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
