@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://nichujie.github.io/</id>
     <title>Cheney的个人博客</title>
-    <updated>2022-01-21T22:03:34.020Z</updated>
+    <updated>2022-01-21T22:11:39.981Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://nichujie.github.io/"/>
     <link rel="self" href="https://nichujie.github.io/atom.xml"/>
@@ -15,8 +15,26 @@
         <id>https://nichujie.github.io/post/java-xue-xi-ri-ji/</id>
         <link href="https://nichujie.github.io/post/java-xue-xi-ri-ji/">
         </link>
-        <updated>2022-01-18T00:16:04.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="前言">前言</h1>
+        <updated>2022-01-17T10:16:04.000Z</updated>
+        <content type="html"><![CDATA[<p><ul class="markdownIt-TOC">
+<li><a href="#%E5%89%8D%E8%A8%80">前言</a>
+<ul>
+<li><a href="#2022120">2022.1.20</a>
+<ul>
+<li><a href="#%E5%9F%BA%E7%A1%80">基础</a></li>
+<li><a href="#oop">OOP</a></li>
+</ul>
+</li>
+<li><a href="#2022121">2022.1.21</a>
+<ul>
+<li><a href="#%E7%BB%A7%E7%BB%ADoop">继续OOP</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</p>
+<h1 id="前言">前言</h1>
 <p>其实我最早自学的一门语言就是Java。初一还是初二的时候某天在书店看到了<a href="https://book.douban.com/subject/6900300/">这本书</a>，头铁就买了下来（中文版豆瓣找不到，想来是太过久远，或者搞不好是盗版）。彼时根本不知道怎么学编程，看到代码片硬是背下来。</p>
 <p>这学期开始Software的课好像都很喜欢用Java。而且我猜测KTH本科也很喜欢用Java，因为教授说“鉴于你们本科大多学过Java”。</p>
 <p>之前实习的一个公司后端也用的是Spring，我也接过一些小需求，但基本上是人工机器学习：看着代码学代码，根本不知道内容是啥，但还是能写完。</p>
@@ -87,8 +105,10 @@ http://www.ruanyifeng.com/blog/2017/07/iaas-paas-saas.html</p>
         <id>https://nichujie.github.io/post/guan-yu-docker-de-wang-luo-pei-zhi/</id>
         <link href="https://nichujie.github.io/post/guan-yu-docker-de-wang-luo-pei-zhi/">
         </link>
-        <updated>2020-02-07T06:31:34.000Z</updated>
-        <content type="html"><![CDATA[<p>最近实习的一个小项目中涉及到了使用docker部署。正好之前一直想学习下docker，于是本着业务驱动学习的心态，花了1天速成了一下docker。然而，当我开始着手配置容器的时候，容器间的通信和网络死活配置不好。最终，经历了整整2天的查阅文档和尝试，才完成了老大的要求（好菜）。关于这个问题的描述网上并不多，于是我决定写一篇博客来记录一下。</p>
+        <updated>2020-02-06T23:31:34.000Z</updated>
+        <content type="html"><![CDATA[<blockquote>
+<p>最近实习的一个小项目中涉及到了使用docker部署。正好之前一直想学习下docker，于是本着业务驱动学习的心态，花了1天速成了一下docker。然而，当我开始着手配置容器的时候，容器间的通信和网络死活配置不好。最终，经历了整整2天的查阅文档和尝试，才完成了老大的要求（好菜）。关于这个问题的描述网上并不多，于是我决定写一篇博客来记录一下。</p>
+</blockquote>
 <h2 id="问题背景">问题背景</h2>
 <p>为了快速部署和迭代，整个项目采用了docker化部署的策略。简单来说就是一个应用模块打包成一个docker容器：react的前端一个，django一个，java的后端一个，MySQL一个，nginx一个...</p>
 <p>一般来说流程都是用docker-compose来编排和部署一组容器，这一组容器相当于封装在了一起，共享各种资源，就好像在同一台虚拟机上运行一样。但是偶尔，我们会遇到这样的需求：为了降低代码的耦合度，要求将不同的应用组封装在不同的docker-compose，但是仍然需要互相通信。简言之，两个docker-compose文件中的容器如何互相通信呢？</p>
