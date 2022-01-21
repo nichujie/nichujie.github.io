@@ -154,12 +154,16 @@ OOP
 </ol>
 <h3 id="oop">OOP</h3>
 <ol>
-<li><code>sealed</code>和<code>permits</code>: 不允许继承/允许部分继承<pre><code class="language-java">public sealed class Shape permits Rect, Circle, Triangle {
+<li><code>sealed</code>和<code>permits</code>: 不允许继承/允许部分继承</li>
+</ol>
+<pre><code class="language-java">public sealed class Shape permits Rect, Circle, Triangle {
     ...  // 仅允许Rect, Circle, Triangle继承
 }
 </code></pre>
-</li>
-<li>instanceof和强制类型转换简写<pre><code class="language-java">public class Main {
+<ol start="2">
+<li>instanceof和强制类型转换简写</li>
+</ol>
+<pre><code class="language-java">public class Main {
     public static void main(String[] args) {
         Object obj = &quot;hello&quot;;
         if (obj instanceof String s) {  // 省去一步obj强转为s
@@ -169,8 +173,6 @@ OOP
     }
 }
 </code></pre>
-</li>
-</ol>
 <h2 id="2022121">2022.1.21</h2>
 <h3 id="继续oop">继续OOP</h3>
 <ol>
