@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://nichujie.github.io/</id>
     <title>Cheney的个人博客</title>
-    <updated>2022-01-20T22:57:18.526Z</updated>
+    <updated>2022-01-21T22:03:34.020Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://nichujie.github.io/"/>
     <link rel="self" href="https://nichujie.github.io/atom.xml"/>
@@ -15,7 +15,7 @@
         <id>https://nichujie.github.io/post/java-xue-xi-ri-ji/</id>
         <link href="https://nichujie.github.io/post/java-xue-xi-ri-ji/">
         </link>
-        <updated>2022-01-18T21:16:04.000Z</updated>
+        <updated>2022-01-18T00:16:04.000Z</updated>
         <content type="html"><![CDATA[<h1 id="前言">前言</h1>
 <p>其实我最早自学的一门语言就是Java。初一还是初二的时候某天在书店看到了<a href="https://book.douban.com/subject/6900300/">这本书</a>，头铁就买了下来（中文版豆瓣找不到，想来是太过久远，或者搞不好是盗版）。彼时根本不知道怎么学编程，看到代码片硬是背下来。</p>
 <p>这学期开始Software的课好像都很喜欢用Java。而且我猜测KTH本科也很喜欢用Java，因为教授说“鉴于你们本科大多学过Java”。</p>
@@ -57,6 +57,29 @@
 </code></pre>
 </li>
 </ol>
+<h2 id="2022121">2022.1.21</h2>
+<h3 id="继续oop">继续OOP</h3>
+<ol>
+<li>包作用域：同一个package内，不写public/protected/private</li>
+<li>包没有父子关系</li>
+<li>推荐把private方法放到class后面定义（专注于public方法）</li>
+</ol>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[xx是什么？]]></title>
+        <id>https://nichujie.github.io/post/xx-shi-shi-me/</id>
+        <link href="https://nichujie.github.io/post/xx-shi-shi-me/">
+        </link>
+        <updated>2020-04-12T22:14:15.000Z</updated>
+        <content type="html"><![CDATA[<blockquote>
+<p>记录一些平时学习到或者突然想到的名词</p>
+</blockquote>
+<h1 id="iaaspaassaas">IaaS，PaaS，SaaS</h1>
+<p>简单来说是云服务的三种模式。开发者根据自己的情况来选择不同的云服务模式。<br>
+http://www.ruanyifeng.com/blog/2017/07/iaas-paas-saas.html</p>
+<h1 id="最佳实践">最佳实践</h1>
+<p>又名Best Practice</p>
 ]]></content>
     </entry>
     <entry>
