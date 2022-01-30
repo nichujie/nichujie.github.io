@@ -4,43 +4,46 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>xx是什么？ - Cheney的个人博客</title>
+<title>Software Reliability 笔记 - Cheney的个人博客</title>
 <link rel="shortcut icon" href="https://nichujie.github.io//favicon.ico">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
 <link rel="stylesheet" href="https://nichujie.github.io//media/css/tailwind.css">
 <link rel="stylesheet" href="https://nichujie.github.io//styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="xx是什么？ - Cheney的个人博客 - Atom Feed" href="https://nichujie.github.io//atom.xml">
+<link rel="alternate" type="application/atom+xml" title="Software Reliability 笔记 - Cheney的个人博客 - Atom Feed" href="https://nichujie.github.io//atom.xml">
 
     
 
-  <meta name="description" content="
-记录一些平时学习到或者突然想到的名词
+  <meta name="description" content="Glass-box Testing
+Three Types of Coverage Model
 
-IaaS，PaaS，SaaS
-简单来说是云服务的三种模式。开发者根据自己的情况来选择不同的云服务模式。
-http://www.ruanyifeng.com/blog/2017/07/iaas-paa..." />
-  <meta property="og:title" content="xx是什么？ - Cheney的个人博客">
-  <meta property="og:description" content="
-记录一些平时学习到或者突然想到的名词
+Control Flow
 
-IaaS，PaaS，SaaS
-简单来说是云服务的三种模式。开发者根据自己的情况来选择不同的云服务模式。
-http://www.ruanyifeng.com/blog/2017/07/iaas-paa..." />
+Model the flow of control
+Examples: node coverage, edge c..." />
+  <meta property="og:title" content="Software Reliability 笔记 - Cheney的个人博客">
+  <meta property="og:description" content="Glass-box Testing
+Three Types of Coverage Model
+
+Control Flow
+
+Model the flow of control
+Examples: node coverage, edge c..." />
   <meta property="og:type" content="articles">
-  <meta property="og:url" content="https://nichujie.github.io/post/xx-shi-shi-me/" />
+  <meta property="og:url" content="https://nichujie.github.io/post/software-reliability-bi-ji/" />
   <meta property="og:image" content="https://nichujie.github.io//images/avatar.png">
   <meta property="og:image:height" content="630">
   <meta property="og:image:width" content="1200">
-  <meta name="twitter:title" content="xx是什么？ - Cheney的个人博客">
-  <meta name="twitter:description" content="
-记录一些平时学习到或者突然想到的名词
+  <meta name="twitter:title" content="Software Reliability 笔记 - Cheney的个人博客">
+  <meta name="twitter:description" content="Glass-box Testing
+Three Types of Coverage Model
 
-IaaS，PaaS，SaaS
-简单来说是云服务的三种模式。开发者根据自己的情况来选择不同的云服务模式。
-http://www.ruanyifeng.com/blog/2017/07/iaas-paa...">
+Control Flow
+
+Model the flow of control
+Examples: node coverage, edge c...">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="canonical" href="https://nichujie.github.io/post/xx-shi-shi-me/">
+  <link rel="canonical" href="https://nichujie.github.io/post/software-reliability-bi-ji/">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
@@ -62,27 +65,45 @@ http://www.ruanyifeng.com/blog/2017/07/iaas-paa...">
     <div class="max-w-4xl w-full mx-auto">
       <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
         <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
-          xx是什么？
+          Software Reliability 笔记
         </h1>
         
         <div class="mb-8 flex flex-wrap">
-          <div class="text-gray-400 text-sm mr-4">2020-04-12 · 2 min read</div>
+          <div class="text-gray-400 text-sm mr-4">2022-01-30 · 1 min read</div>
           
         </div>
         <div class="markdown mb-8" v-pre>
-          <blockquote>
-<p>记录一些平时学习到或者突然想到的名词</p>
-</blockquote>
-<h1 id="iaaspaassaas">IaaS，PaaS，SaaS</h1>
-<p>简单来说是云服务的三种模式。开发者根据自己的情况来选择不同的云服务模式。<br>
-http://www.ruanyifeng.com/blog/2017/07/iaas-paas-saas.html</p>
-<h1 id="解决方案">解决方案</h1>
-<p>这个词有很多很官方的定义。对我来说，只要一个地方有需求和痛点，这个时候与之对应的<mark>具体手段</mark>就叫做解决方案。</p>
-<p>例如，阿里云会说自己是什么中小企业解决方案，是因为从前小企业很难自己手把手搭建起自己的服务器，更不要说有个像样的官网。阿里云首先提供虚拟主机，云存储，数据服务blabla，这是他们的<mark>产品</mark>。而它告诉你，你购买一个云主机，云存储，搭配一个AI客服就可以解决你们公司的建站需求，这就叫做解决方案。</p>
-<h1 id="最佳实践">最佳实践</h1>
-<p>又名Best Practice。通俗的说是一些前人总结出来，已经被验证过的解决方案。这些解决方案往往不出现在教程里，因为教程只包含最基础的标准和规范。最佳实践往往是对标准的运用、组合，而且往往有较为具体的应用场景。</p>
-<p>以C++为例。VG101的小朋友们很喜欢把所有class的方法和属性定义为public，这真是方便极了。这是符合语言规范的，因为可以编译，没有语法错误--但这样<mark>不好</mark>。最佳实践是尽可能的封装class的实现细节，尽可能少的对外暴露方法和属性。</p>
-<p>从这个例子来说，最佳实践往往是debatable的，但规范不是：没有人会在C++里用<code>extends</code>来写继承。一句话总结：教程告诉你能做什么，最佳实践是怎么做比较好。</p>
+          <h1 id="glass-box-testing">Glass-box Testing</h1>
+<h2 id="three-types-of-coverage-model">Three Types of Coverage Model</h2>
+<ol>
+<li>Control Flow
+<ol>
+<li>Model the flow of control</li>
+<li>Examples: node coverage, edge coverage</li>
+</ol>
+</li>
+<li>Logic
+<ol>
+<li>Analyse the influence of all Boolean variables</li>
+<li>Examples: predicate coverage, clause coverage, MCDC (FAA DO178B)</li>
+</ol>
+</li>
+<li>Data Flow
+<ol>
+<li>Measure the flow of data between variable assignments (writes) and variable references (reads).</li>
+<li>Examples: all-definitions, all-uses</li>
+</ol>
+</li>
+</ol>
+<h2 id="test-requirements">Test Requirements</h2>
+<ul>
+<li>Generated by a coverage model</li>
+<li>Easy to measure coverage</li>
+</ul>
+<h2 id="condensation-graph">Condensation Graph</h2>
+<p>A node is either an <strong>Assignment block</strong> or a <strong>Boolean condition</strong>.</p>
+<h2 id="satisfying-a-coverage-model">Satisfying a Coverage Model</h2>
+<figure data-type="image" tabindex="1"><img src="https://nichujie.github.io//post-images/1643560288376.png" alt="" loading="lazy"></figure>
 
         </div>
         <!-- Share to Twitter, Weibo, Telegram -->
@@ -126,9 +147,14 @@ http://www.ruanyifeng.com/blog/2017/07/iaas-paas-saas.html</p>
       </div>
       <div class="post-toc-container">
         <ul class="markdownIt-TOC">
-<li><a href="#iaaspaassaas">IaaS，PaaS，SaaS</a></li>
-<li><a href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88">解决方案</a></li>
-<li><a href="#%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5">最佳实践</a></li>
+<li><a href="#glass-box-testing">Glass-box Testing</a>
+<ul>
+<li><a href="#three-types-of-coverage-model">Three Types of Coverage Model</a></li>
+<li><a href="#test-requirements">Test Requirements</a></li>
+<li><a href="#condensation-graph">Condensation Graph</a></li>
+<li><a href="#satisfying-a-coverage-model">Satisfying a Coverage Model</a></li>
+</ul>
+</li>
 </ul>
 
       </div>
